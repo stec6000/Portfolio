@@ -1,4 +1,4 @@
-<h3>Gallery</h3>
+<h3><a href="{% url 'gallery' %}">GALLERY</a></h3>
 
 <div class="menu">
     <a href="">Tomasz Steckiewicz</a>
@@ -10,10 +10,18 @@
 <div class="albums">
     {% for album in albums %}
         <div class="album">
-            <a href="">
-                <img width="280px" height="280px" src={{ album.image.url }} alt={{ album.name }}>
+            <a href="{% url 'gallery' %}?album={{album.name}}">
+                {{ album.name }}
             </a>
-            <a href="">{{ album.name }}</a>
         </div>
     {% endfor %}
+
+    <div class="photos">
+        {% for photo in photos %}
+            <div class="photo">
+                <a href="">
+                    <img width="280px" height="280px" src={{ photo.image.url }} alt={{ photo.name }}>
+                </a>
+            </div>
+        {% endfor %}
 </div>

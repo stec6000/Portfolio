@@ -12,9 +12,9 @@ class Album(models.Model):
 
 class Photo(models.Model):
     
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='images/')
-    album = models.OneToOneField(Album, on_delete=models.CASCADE)
-
+    
     def __str__(self):
         return self.name
